@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 
 // Routes
 
-app.post('/', (req, res))
+app.post('/', )
 
 
 app.listen(port, () => {
