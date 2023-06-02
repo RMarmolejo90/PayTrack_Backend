@@ -6,6 +6,9 @@ app.get('/', (req, res) => {
   res.send('Server is Live!')
 })
 
+// Dependencies
+require('./database/DbConnect.js');
+
 // Routes
 
 app.post('/', )
