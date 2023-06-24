@@ -7,17 +7,19 @@ app.get('/', (req, res) => {
   res.send('Server is Live!')
 })
 // Import Controllers
-const { clockIn } = require('./controllers/ShiftController.js')
+const { clockIn, clockOut } = require('./controllers/ShiftController.js')
 
 // Dependencies
 require('./database/DbConnect.js');
-require('dotenv').config()
+require('dotenv').config();
 
 // Routes
 
-app.post('/', clockIn )
+app.post('/clock-in', clockIn );
+
+app.put('/clock-out', clockOut);
 
 
 app.listen(port, () => {
-  console.log(`Connected on Port: ${port}`)
-})
+  console.log(`Connected on Port: ${port}`);
+});
