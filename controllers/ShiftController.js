@@ -12,15 +12,27 @@ const clockIn = async(req, res) => {
     res.json(shift.timeIn);
 }
 
-//clock-out
-const clockOut = async(req, res) => {
-    //set time
-    const endTime = DateTime.now()
-    //save time to DB
-    
-    //return timestamp
 
-}
+// clock-out
+const clockOut = async (req, res) => {
+    // Find the active shift
+    const activeShift = await Shift.findOne({ endTime: { $exists: false } });
+  
+    if (activeShift) {
+      // Set the end time
+      activeShift.endTime = Date.now();
+  
+      // Save the updated shift document
+      await activeShift.save();
+  
+      // Return the end time
+      console.log(activeShift.endTime);
+      res.json({ endTime: activeShift.endTime });
+    } else {
+      res.json({ message: 'No active shift found.' });
+    }
+  };
+  
 
 module.exports = {
     clockIn: clockIn,
