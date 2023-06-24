@@ -6,5 +6,5 @@ const username = process.env.DB_USER;
 
 
 async function connectDb() {
-  await mongoose.connect('mongodb+srv://'+{username}+':'+{password}+'@paytrack.pvcvojy.mongodb.net/')
+  await mongoose.connect(`mongodb+srv://${username}:${password}@paytrack.pvcvojy.mongodb.net/`)
 }
