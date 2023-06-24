@@ -5,10 +5,10 @@ const clockIn = async(req, res) => {
     const date = new Date()
     //save time to DB
     const shift = await Shift.create({
-        timeIn: date.now(),
+        timeIn: date.getTime(),
     });
     //return timestamp
-    console.log(timeIn);
+    console.log(shift.timeIn);
     res.json(shift.timeIn);
 }
 
