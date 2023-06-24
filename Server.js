@@ -5,13 +5,15 @@ const port = 3000
 app.get('/', (req, res) => {
   res.send('Server is Live!')
 })
+// Import Controllers
+const { clockIn } = require('./controllers/ShiftController.js')
 
 // Dependencies
 require('./database/DbConnect.js');
 
 // Routes
 
-app.post('/', )
+app.post('/', clockIn )
 
 
 app.listen(port, () => {
