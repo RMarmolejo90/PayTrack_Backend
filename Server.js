@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 })
 // Import Controllers
 const { clockIn, clockOut } = require('./controllers/ShiftController.js')
-const { registerUser } = require('./controllers/UsersController.js')
+const registerUser = require('./controllers/UsersController.js')
 
 // Dependencies
 require('./database/DbConnect.js');
