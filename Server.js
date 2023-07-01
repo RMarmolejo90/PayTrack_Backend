@@ -1,18 +1,16 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const cors = require('cors');
 
-
-app.get('/', (req, res) => {
-  res.send('Server is Live!')
-})
 // Import Controllers
 const { clockIn, clockOut } = require('./controllers/ShiftController.js')
 const registerUser = require('./controllers/UsersController.js')
 
 // Dependencies
-require('./database/DbConnect.js');
-require('dotenv').config();
+//require('./database/DbConnect.js');
+//require('dotenv').config();
+app.use(cors());
 
 // Routes
 
