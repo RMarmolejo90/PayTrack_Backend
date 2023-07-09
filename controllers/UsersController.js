@@ -3,20 +3,17 @@ const bcrypt = require('bcrypt');
 const saltRounds = 5;
 
 const registerUser = async (req, res) => {
- 
   try {
     const { firstName, lastName, email, password } = req.body;
     const hash = await bcrypt.hash(password, saltRounds);
 
-    //Check database existing user
-    //If user exists - route to login page
-    if (User.exists({email: email})){
+    // Check if user already exists in the database
+    const userExists = await User.exists({ email });
+    if (userExists) {
       return res.redirect('/login');
     }
-    //If user does not exist, save credentials
-    else{
 
-
+    // User does not exist, save the credentials
     await User.create({
       firstName,
       lastName,
@@ -24,9 +21,14 @@ const registerUser = async (req, res) => {
       password: hash,
     });
 
-  } catch (err){
-    console.error(err);
-    res.status(500).send('problem with saving to the database');}
+    // Registration successful, do something else if needed
+    res.send("Success");
+    return res.redirect("/PayTracker");
+    // ...
+
+  } catch (error) {
+    console.error(error);
+    // res.status(500).send('Problem with saving to the database');
   }
 };
 
