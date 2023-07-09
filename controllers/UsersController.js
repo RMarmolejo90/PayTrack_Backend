@@ -4,29 +4,19 @@ const saltRounds = 5;
 
 const registerUser = async (req, res) => {
   try {
-    // const { firstName, lastName, email, password } = req.body;
-    // const hash = await bcrypt.hash(password, saltRounds);
-
-    // await User.create({
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password: hash,
-    // });
     const { firstName, lastName, email, password } = req.body;
-    console.log(req.body);
+    const hash = await bcrypt.hash(password, saltRounds);
+
     await User.create({
       firstName,
       lastName,
       email,
-      password
+      password: hash,
     });
-    console.log('sucess');
 
-    res.status(200).json({ message: 'User registered successfully' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Internal Server Error' });
+  } catch (err){
+    console.error(err);
+    res.status(500).send('problem with saving to the database');
   }
 };
 

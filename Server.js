@@ -3,8 +3,8 @@ const app = express()
 const port = 3000
 const cors = require('cors');
 // Dependencies
-//require('./database/DbConnect.js');
-//require('dotenv').config();
+require('dotenv').config();
+require('./database/DbConnect.js');
 app.use(cors(
   {credentials: true}
 ));
