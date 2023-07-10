@@ -23,7 +23,6 @@ const registerUser = async (req, res) => {
 
     // Registration successful, do something else if needed
     res.send("Success");
-    return res.redirect("/PayTracker");
     // ...
 
   } catch (error) {
