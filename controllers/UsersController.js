@@ -10,7 +10,7 @@ const registerUser = async (req, res) => {
     // Check if user already exists in the database
     const userExists = await User.exists({ email });
     if (userExists) {
-      return res.redirect('/login');
+      res.send('User already exists');
     }
 
     // User does not exist, save the credentials
