@@ -13,7 +13,8 @@ app.use(express.json());
 
 // Import Controllers
 const { clockIn, clockOut } = require('./controllers/ShiftController.js')
-const registerUser = require('./controllers/UsersController.js')
+const registerUser = require('./controllers/RegisterController.js')
+const userLogin = require('./controllers/LoginController.js')
 
 
 // Routes
@@ -25,6 +26,8 @@ app.post('/clock-in', clockIn );
 app.put('/clock-out', clockOut);
 
 app.post('/register', registerUser);
+
+app.post('/login', userLogin);
 
 
 app.listen(port, () => {
