@@ -4,6 +4,6 @@ const mongoose = require('mongoose');
 connectDb().catch(err => console.log(err));
 
 async function connectDb() {
-  await mongoose.connect("mongodb+srv://RMarmolejo:COjv1ZXGoIkBOw2G@paytrack.pvcvojy.mongodb.net/?retryWrites=true&w=majority");
+  await mongoose.connect(process.env.MONGO_URI);
   console.log("Connected to Database");
 }
