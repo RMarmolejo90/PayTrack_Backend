@@ -15,11 +15,14 @@ app.use(express.json());
 const { clockIn, clockOut } = require('./controllers/ShiftController.js')
 const registerUser = require('./controllers/RegisterController.js')
 const userLogin = require('./controllers/LoginController.js')
+const authenticateToken = require('./middleware/authenticate.js');
 
 
 // Routes
 
 app.get('/register', (req, res) => {res.send('Server is running')});
+
+app.get('/Auth', authenticateToken );
 
 app.post('/clock-in', clockIn );
 
