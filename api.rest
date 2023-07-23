@@ -15,3 +15,6 @@ Content-Type: application/json
     "email": "test@gmail.com",
     "password": "test"
 }
+
+###
+GET http://localhost:3000/Auth
