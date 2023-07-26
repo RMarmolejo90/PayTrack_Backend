@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const cors = require('cors');
+const router = express.Router()
 
 // Dependencies
 require('./database/DbConnect.js');
@@ -16,13 +17,16 @@ const { clockIn, clockOut } = require('./controllers/ShiftController.js')
 const registerUser = require('./controllers/RegisterController.js')
 const userLogin = require('./controllers/LoginController.js')
 const authenticateToken = require('./middleware/authenticate.js');
+const getUserInfo = require('./controllers/ProController.js');
 
 
 // Routes
 
-app.get('/register', (req, res) => {res.send('Server is running')});
+app.get('/register', registerUser);
 
 app.get('/Auth', authenticateToken );
+
+app.get('/user', getUserInfo);
 
 app.post('/clock-in', clockIn );
 
