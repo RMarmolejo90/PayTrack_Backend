@@ -12,7 +12,7 @@ const userLogin = async (req, res) => {
       return res.status(401).json({ error: 'Invalid email or password' });
     }
 
-    const passwordMatch = bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ error: 'Invalid email or password' });
@@ -20,7 +20,7 @@ const userLogin = async (req, res) => {
 
     const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '24h' });
 
-    res.json({ token });
+    res.json({ token })
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });

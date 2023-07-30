@@ -18,6 +18,7 @@ const registerUser = require('./controllers/RegisterController.js')
 const userLogin = require('./controllers/LoginController.js')
 const authenticateToken = require('./middleware/authenticate.js');
 const getUserInfo = require('./controllers/ProController.js');
+const getEmail = require('./controllers/getEmail.js')
 
 
 // Routes
@@ -27,6 +28,8 @@ app.get('/register', registerUser);
 app.get('/Auth', authenticateToken );
 
 app.get('/user', getUserInfo);
+
+app.get('/email', getEmail);
 
 app.post('/clock-in', clockIn );
 
