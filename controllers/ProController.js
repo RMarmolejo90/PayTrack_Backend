@@ -4,7 +4,7 @@ const Shift = require('../models/Shift')
 
 const getUserInfo = async (req, res) => {
   try {
-    const token = req.headers.authorization?.split(' ')[1];
+    const token = req.headers.authorization?.split('.')[1];
 
     if (!token) {
       return res.status(401).json({ error: 'Authentication token not found' });
@@ -18,7 +18,7 @@ const getUserInfo = async (req, res) => {
       return res.status(400).json({ error: 'Invalid user ID in token' });
     }
 
-    const userInfo = await User.findOne();
+    const userInfo = await User.findOne(userId);
     if (!userInfo) {
       return res.status(404).json({ error: 'User not found' });
     }
