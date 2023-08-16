@@ -25,7 +25,7 @@ const getEmail = require('./controllers/getEmail.js')
 
 app.get('/register', registerUser);
 
-app.get('/Auth', authenticateToken, (req, res) => {
+app.get('/auth', authenticateToken, (_req, res) => {
   res.json({ valid: true });
 });
 
