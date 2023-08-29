@@ -9,8 +9,12 @@ const authenticateToken = async (req, res, next) => {
   if (token === null) return res.sendStatus(401);
 
   try {
+    console.log(authHeader);
+    console.log(token);
     const {_id} = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = await User.findOne({_id}).select(_id);
+    console.log(_id);
+    const user = await User.findOne({_id});
+    console.log(user);
     next();
   } catch (error) {
     console.log(error);

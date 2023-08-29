@@ -3,7 +3,6 @@ const express = require('express')
 const app = express()
 const port = 3000
 const cors = require('cors');
-const router = express.Router()
 
 // Dependencies
 require('./database/DbConnect.js');
@@ -22,6 +21,10 @@ const getEmail = require('./controllers/getEmail.js')
 
 
 // Routes
+
+app.get('/', (req, res) => {
+  res.write("active");
+});
 
 app.get('/register', registerUser);
 
