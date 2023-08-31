@@ -3,17 +3,9 @@ const User = require('../models/Users');
 const Shift = require('../models/Shift')
 
 const getUserInfo = async (req, res) => {
+  const userId = req.headers.userId;
   try {
-    const token = req.headers.authorization?.split('.')[1];
-
-    if (!token) {
-      return res.status(401).json({ error: 'Authentication token not found' });
-    }
-
-    // Verify the token and extract the userId
-    const decodedToken = jwt.verify(token, process.env.SECRET_KEY);
-    const userId = decodedToken.userId;
-
+    
     if (!userId) {
       return res.status(400).json({ error: 'Invalid user ID in token' });
     }
