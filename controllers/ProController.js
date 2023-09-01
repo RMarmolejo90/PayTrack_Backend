@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/Users');
 const Shift = require('../models/Shift')
 
 const getUserInfo = async (req, res) => {
@@ -10,13 +9,13 @@ const getUserInfo = async (req, res) => {
       return res.status(400).json({ error: 'Invalid user ID in token' });
     }
 
-    const userInfo = await User.findOne(userId);
+    const userInfo = await Shift.find({userId: userId});
     if (!userInfo) {
       return res.status(404).json({ error: 'User not found' });
     }
 
     // Send the user data as the response
-    return res.status(200).json(userInfo);
+    return res.json(userInfo);
   } catch (error) {
     console.error('Error fetching user info:', error);
     if (error.name === 'TokenExpiredError') {

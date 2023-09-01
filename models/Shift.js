@@ -8,7 +8,8 @@ const shiftSchema = new Schema({
   netPay: Number,
   hoursWorked: Number,
   date: Number,
-  email: String
+  email: String,
+  userId: String
 });
 
 const shift = mongoose.model('Shift', shiftSchema);

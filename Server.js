@@ -33,7 +33,7 @@ app.get('/auth', authenticateToken, (_req, res) => {
   res.json({ valid: true });
 });
 
-app.get('/user', getUserInfo);
+app.get('/user', authenticateToken, getUserInfo);
 
 app.get('/email', getEmail);
 
