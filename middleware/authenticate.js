@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/Users')
 
 const authenticateToken = async (req, res, next) => {
-  const authHeader = req.headers['authorization'];
+  const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(' ')[1];
-  const userId = authHeader.userId;
+  const userId = req.headers.userId;
 
   if (token === null) return res.sendStatus(401);
 

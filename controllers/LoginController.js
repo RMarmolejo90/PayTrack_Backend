@@ -19,6 +19,7 @@ const userLogin = async (req, res) => {
     }
 
     const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '24h' });
+    console.log(`login controller token ${token}`);
 
     res.json({ token })
   } catch (error) {
