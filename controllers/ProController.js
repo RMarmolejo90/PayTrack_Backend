@@ -12,7 +12,9 @@ const getUserInfo = async (req, res) => {
     }
 
     const userInfo = await Shift.find({userId: userId});
-    if (!userInfo) {
+    console.log(`info query data: ${userInfo}`);
+    if (userInfo.length === 0) {
+      console.log("no user info");
       return res.status(204).json({ message:"No History" });
     }
 
