@@ -4,20 +4,23 @@ const User = require('../models/Users')
 
 const authenticateToken = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const token = authHeader && authHeader.split(' ')[1];
-  if (token === null) return res.sendStatus(401);
+  const token = authHeader
+  if (!authHeader || !token) {
+    return res.sendStatus(401); // Unauthorized
+  }
 
   try {
-    console.log(authHeader);
-    console.log(token);
     const validUser = jwt.verify(token, process.env.SECRET_KEY);
-    console.log(validUser);
-    if (validUser){
+    if (validUser) {
       next();
+    } else {
+      return res.sendStatus(403); // Forbidden
     }
   } catch (error) {
-    console.log(error);
-    return res.sendStatus(403).json({error: 'request not authorized'}); 
+    console.error(error);
+    return res.sendStatus(403); // Forbidden
   }
-}
+};
+
 module.exports = authenticateToken;
+
