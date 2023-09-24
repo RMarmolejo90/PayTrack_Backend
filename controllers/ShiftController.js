@@ -7,7 +7,7 @@ const clockIn = async(req, res) => {
     //save time to DB
     const shift = await Shift.create({
         timeIn: date.getTime(),
-        date: Date.now().toLocaleString(),
+        date: new Date().toLocaleString(),
         userId: userId,
     });
     //return timestamp

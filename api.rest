@@ -22,3 +22,8 @@ GET http://localhost:3000/Auth
 ###
 
 POST http://localhost:3000/clock-in
+Content-Type: application/json
+
+{
+    "userId": "64b9d7de201de63e5d7211f9" 
+}
