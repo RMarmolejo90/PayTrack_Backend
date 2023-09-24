@@ -18,3 +18,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/Auth
+
+###
+
+POST http://localhost:3000/clock-in
