@@ -2,10 +2,13 @@ const Shift = require('../models/Shift');
 
 // clock-in
 const clockIn = async(req, res) => {
+    const { email, userId } = req.body;
     const date = new Date()
     //save time to DB
     const shift = await Shift.create({
         timeIn: date.getTime(),
+        date: Date.now().toLocaleString(),
+        userId: userId,
     });
     //return timestamp
     console.log(shift.timeIn);
