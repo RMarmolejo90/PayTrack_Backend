@@ -2,7 +2,7 @@ const Shift = require('../models/Shift');
 
 // clock-in
 const clockIn = async(req, res) => {
-    const { email, userId } = req.body;
+    const { userId } = req.body;
     const date = new Date()
     //save time to DB
     const shift = await Shift.create({
@@ -18,12 +18,17 @@ const clockIn = async(req, res) => {
 
 // clock-out
 const clockOut = async (req, res) => {
+    const {grossPay, netPay, hoursWorked} = req.body;
     // Find the active shift
     const activeShift = await Shift.findOne({ endTime: { $exists: false } });
   
     if (activeShift) {
       // Set the end time
       activeShift.endTime = Date.now();
+      // Set shift data
+      activeShift.grossPay = grossPay;
+      activeShift.netPay = netPay;
+      activeShift.hoursWorked = hoursWorked;
   
       // Save the updated shift document
       await activeShift.save();
