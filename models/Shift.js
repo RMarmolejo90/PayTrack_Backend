@@ -6,7 +6,7 @@ const shiftSchema = new Schema({
   endTime: Number,
   grossPay: Number,
   netPay: Number,
-  hoursWorked: Number,
+  hoursWorked: String,
   date: String,
   userId: String
 });
