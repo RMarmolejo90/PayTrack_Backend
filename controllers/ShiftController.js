@@ -1,7 +1,7 @@
 const Shift = require('../models/Shift');
 
 // clock-in
-const clockIn = async(req, res) => {
+const clockIn = async (req, res) => {
     const { userId } = req.body;
     const date = new Date()
     //save time to DB
@@ -43,7 +43,8 @@ const clockOut = async (req, res) => {
   
   // Delete Shift
 
-  const deleteShift = async (id) => {
+  const deleteShift = async (req, res) => {
+    const id = req.params.id
     try {
       const deleted = await Shift.findByIdAndDelete(id);
       if (!deleted){

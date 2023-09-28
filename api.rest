@@ -27,3 +27,7 @@ Content-Type: application/json
 {
     "userId": "64b9d7de201de63e5d7211f9" 
 }
+
+###
+
+DELETE http://localhost:3000/Shift/651373f328c3121bdb4dfe90
