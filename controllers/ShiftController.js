@@ -44,19 +44,19 @@ const clockOut = async (req, res) => {
   // Delete Shift
 
   const deleteShift = async (req, res) => {
-    const id = req.params.id
+    const id = req.params.id;
     try {
       const deleted = await Shift.findByIdAndDelete(id);
-      if (!deleted){
-        res.status(404).json({message: 'Shift not found'});
+      if (!deleted) {
+        return res.status(404).json({ message: 'Shift not found' });
       }
-      res.json({message: 'Sucessfully Deleted'});
+      return res.json({ message: 'Successfully Deleted' });
     } catch (error) {
       console.error('Error deleting shift:', error);
-      res.status(500).json({message: 'error deleding shift'});
+      return res.status(500).json({ message: 'Error deleting shift' });
     }
   };
-
+  
 module.exports = {
     clockIn: clockIn,
     clockOut: clockOut,
