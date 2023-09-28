@@ -46,7 +46,7 @@ app.post('/register', registerUser);
 
 app.post('/login', userLogin);
 
-app.delete('/shift', deleteShift);
+app.delete('/shift/:id', deleteShift);
 
 app.listen(port, () => {
   console.log(`Connected on Port: ${port}`);
