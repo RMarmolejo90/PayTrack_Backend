@@ -12,7 +12,7 @@ app.use(cors(
 app.use(express.json());
 
 // Import Controllers
-const { clockIn, clockOut } = require('./controllers/ShiftController.js')
+const { clockIn, clockOut, deleteShift } = require('./controllers/ShiftController.js')
 const registerUser = require('./controllers/RegisterController.js')
 const userLogin = require('./controllers/LoginController.js')
 const authenticateToken = require('./middleware/authenticate.js');
@@ -26,7 +26,6 @@ app.get('/', (req, res) => {
   res.write("active");
 });
 
-app.get('/register', registerUser);
 
 app.get('/auth', authenticateToken, (_req, res) => {
   console.log('authenticated and awaiting response');
@@ -41,10 +40,13 @@ app.post('/clock-in', clockIn );
 
 app.put('/clock-out', clockOut);
 
+app.get('/register', registerUser);
+
 app.post('/register', registerUser);
 
 app.post('/login', userLogin);
 
+app.delete('/shift', deleteShift);
 
 app.listen(port, () => {
   console.log(`Connected on Port: ${port}`);

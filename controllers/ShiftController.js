@@ -41,8 +41,18 @@ const clockOut = async (req, res) => {
     }
   };
   
+  // Delete Shift
 
+  const deleteShift = async (id) => {
+    try {
+      const response = await axios.delete(`/your-api-endpoint/${id}`);
+      console.log('Successfully deleted:', response.data.message);
+    } catch (error) {
+      console.error('Error deleting shift:', error);
+    }
+  };
 module.exports = {
     clockIn: clockIn,
     clockOut: clockOut,
+    deleteShift: deleteShift,
 }
