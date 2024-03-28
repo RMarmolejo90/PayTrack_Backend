@@ -1,5 +1,5 @@
 {
-  "name": "PayTracker_Backend",
+  "name": "pt-server",
   "version": "1.0.0",
   "description": "Backend for the pay tracker app",
   "main": "Server.js",
