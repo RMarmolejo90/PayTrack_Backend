@@ -1,8 +1,8 @@
 {
-  "name": "ptbackend",
+  "name": "PayTracker_Backend",
   "version": "1.0.0",
   "description": "Backend for the pay tracker app",
-  "main": "index.js",
+  "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon Server.js",
