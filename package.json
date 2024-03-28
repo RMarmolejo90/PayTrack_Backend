@@ -2,11 +2,11 @@
   "name": "pt-server",
   "version": "1.0.0",
   "description": "Backend for the pay tracker app",
-  "main": "Server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Server.js",
-    "run start": "nodemon Server.js"
+    "start": "node index.js",
+    "run start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
