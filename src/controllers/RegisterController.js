@@ -1,5 +1,5 @@
 require("dotenv").config({ path: "../../.env" });
-const User = require("../models/Users");
+const User = require("../src/models/Users");
 const bcrypt = require("bcrypt");
 const saltRounds = 5;
 const jwt = require("jsonwebtoken");
@@ -12,7 +12,9 @@ const registerUser = async (req, res) => {
     // Check if user already exists in the database
     const userExists = await User.exists({ email });
     if (userExists) {
-      return res.status(409).json({ error: 'User already exists, Please Log In' });
+      return res
+        .status(409)
+        .json({ error: "User already exists, Please Log In" });
     }
 
     // Hash the password
@@ -27,7 +29,9 @@ const registerUser = async (req, res) => {
     });
 
     // Generate a JWT token
-    const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_KEY, { expiresIn: '24h' });
+    const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_KEY, {
+      expiresIn: "24h",
+    });
 
     // Registration successful
     res.status(201).json({
@@ -38,7 +42,7 @@ const registerUser = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 

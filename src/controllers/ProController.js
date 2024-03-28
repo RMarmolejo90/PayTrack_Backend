@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const Shift = require("../models/Shift");
+const Shift = require("../src/models/Shift");
 
 const getUserInfo = async (req, res) => {
   const userId = req.headers.userid;

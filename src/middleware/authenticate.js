@@ -1,10 +1,10 @@
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
-const User = require('../models/Users')
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
+const User = require("../models/Users");
 
 const authenticateToken = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const token = authHeader
+  const token = authHeader;
   if (!authHeader || !token) {
     return res.sendStatus(401); // Unauthorized
   }
@@ -23,4 +23,3 @@ const authenticateToken = async (req, res, next) => {
 };
 
 module.exports = authenticateToken;
-
