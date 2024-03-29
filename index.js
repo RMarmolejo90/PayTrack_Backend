@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const cors = require("cors");
 
 // Dependencies
@@ -47,4 +47,6 @@ app.post("/login", userLogin);
 
 app.delete("/shift/:id", deleteShift);
 
-app.listen(port, () => {});
+app.listen(port, () => {
+  console.log(`server is running on port ${port}`);
+});
