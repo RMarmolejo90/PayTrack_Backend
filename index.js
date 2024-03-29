@@ -47,6 +47,6 @@ app.post("/login", userLogin);
 
 app.delete("/shift/:id", deleteShift);
 
-app.listen(port, () => {
+app.listen(port, "0,0,0,0", () => {
   console.log(`server is running on port ${port}`);
 });
