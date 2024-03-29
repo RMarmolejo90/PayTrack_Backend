@@ -1,4 +1,4 @@
-const Shift = require("../src/models/Shift");
+const Shift = require("../models/Shift");
 
 // clock-in
 const clockIn = async (req, res) => {

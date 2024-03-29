@@ -1,5 +1,5 @@
 require("dotenv").config({ path: "../../.env" });
-const User = require("../src/models/Users");
+const User = require("../models/Users");
 const bcrypt = require("bcrypt");
 const saltRounds = 5;
 const jwt = require("jsonwebtoken");

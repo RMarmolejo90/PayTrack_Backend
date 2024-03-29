@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../src/models/Users");
+const User = require("../models/Users");
 
 const getEmail = async (req, res) => {
   try {
